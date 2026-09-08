@@ -1,0 +1,46 @@
+name: Published Foundry validator Action
+
+on:
+  pull_request:
+    paths:
+      - azure.yaml
+      - src/**
+      - .github/workflows/foundry-validation.yml
+  merge_group:
+    types: [checks_requested]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  copilot-requests: write
+
+jobs:
+  validate:
+    if: >-
+      github.event_name != 'pull_request' ||
+      github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out reviewed commit
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          persist-credentials: false
+
+      - name: Run published Foundry validator
+        id: foundry-validation
+        uses: XiaofuHuang/foundry-hosted-agent-validator-action@5644b815fce20a5d015f5229e5f380329ece53e0
+        with:
+          github-token: ${{ github.token }}
+          agent-path: .
+
+      - name: Upload validation reports
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: foundry-validation-reports
+          path: .foundry/results/
+          if-no-files-found: warn
+          retention-days: 7
