@@ -26,7 +26,7 @@ jobs:
 
       - name: Run published Foundry validator
         id: foundry-validation
-        uses: XiaofuHuang/foundry-hosted-agent-validator-action@38350448eae87845e7d9358563e1a629fd4b8d36
+        uses: XiaofuHuang/foundry-hosted-agent-validator-action@f1730b270f0b015e7fc24f6e6a2724e0ed4d1e6b
         with:
           github-token: ${{ github.token }}
           agent-path: .
