@@ -26,17 +26,6 @@ jobs:
 
       - name: Run published Foundry validator
         id: foundry-validation
-        uses: XiaofuHuang/foundry-hosted-agent-validator-action@f1730b270f0b015e7fc24f6e6a2724e0ed4d1e6b
+        uses: XiaofuHuang/foundry-hosted-agent-validator-action@5d5b3420088fe33c3cc60e423be707d6ada90f70
         with:
           github-token: ${{ github.token }}
-          agent-path: .
-          comment-on-pr: "true"
-
-      - name: Upload validation reports
-        if: always()
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
-        with:
-          name: foundry-validation-reports
-          path: .foundry/results/
-          if-no-files-found: warn
-          retention-days: 7
