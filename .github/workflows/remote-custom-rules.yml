@@ -25,4 +25,4 @@ jobs:
         with:
           github-token: ${{ github.token }}
           validate-path: scenarios/remote-rules
-          rules-file: https://raw.githubusercontent.com/microsoft/GitHub-Copilot-for-Azure/228baba1c929661bef00857b130571db36039774/plugins/azure-skills/skills/microsoft-foundry/foundry-agent/validate/references/default-rules.yaml
+          rules-file: https://raw.githubusercontent.com/XiaofuHuang/foundry-validation-custom-rules/main/rules/foundry-rules.yaml
