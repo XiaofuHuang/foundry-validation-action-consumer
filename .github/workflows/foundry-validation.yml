@@ -26,6 +26,7 @@ jobs:
 
       - name: Run published Foundry validator
         id: foundry-validation
-        uses: XiaofuHuang/foundry-hosted-agent-validator-action@v4.3.0
+        uses: XiaofuHuang/foundry-hosted-agent-validator-action@v4.4.0
         with:
           github-token: ${{ github.token }}
+          rules-file: https://raw.githubusercontent.com/microsoft/GitHub-Copilot-for-Azure/c0d66719b626af1706a0fc152ec5f3e53c8477d7/plugins/azure-skills/skills/microsoft-foundry/foundry-agent/validate/references/default-rules.yaml
