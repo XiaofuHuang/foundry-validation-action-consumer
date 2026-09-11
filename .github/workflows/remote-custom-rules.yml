@@ -21,8 +21,8 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha }}
           persist-credentials: false
-      - uses: XiaofuHuang/foundry-hosted-agent-validator-action@v4.5.1
+      - uses: XiaofuHuang/foundry-hosted-agent-validator-action@v5.0.0
         with:
           github-token: ${{ github.token }}
-          validate-path: scenarios/remote-rules
+          agent-path: scenarios/remote-rules
           rules-file: https://raw.githubusercontent.com/XiaofuHuang/foundry-validation-custom-rules/main/rules/foundry-rules.yaml
