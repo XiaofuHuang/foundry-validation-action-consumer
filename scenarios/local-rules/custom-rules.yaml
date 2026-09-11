@@ -1,0 +1,17 @@
+version: 1.0.0
+scope: Local custom-rule scenario.
+
+rules:
+  - id: DOC-001
+    title: Document that the hosted agent is not deployed
+    level: recommendation
+    rationale: A source-only validation sample should not imply that Azure resources or a hosted agent were deployed.
+    guidance:
+      - title: Foundry hosted agents overview
+        link: https://learn.microsoft.com/azure/foundry/agents/concepts/hosted-agents
+    when: Apply to this validation sample.
+    checks: Inspect repository documentation related to the selected hosted agent and verify that it clearly states whether the agent has been deployed.
+    statusCriteria:
+      pass: Documentation clearly states that the hosted agent has not been deployed.
+      fail: Documentation claims or implies that the hosted agent is deployed when repository evidence does not establish deployment.
+      inconclusive: The repository contains no documentation describing deployment status.
