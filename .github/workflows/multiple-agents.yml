@@ -14,6 +14,12 @@ permissions:
 jobs:
   validate:
     if: github.event.pull_request.head.repo.full_name == github.repository
+    strategy:
+      fail-fast: false
+      matrix:
+        agent-path:
+          - scenarios/multiple/first
+          - scenarios/multiple/second
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -21,7 +27,7 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha }}
           persist-credentials: false
-      - uses: XiaofuHuang/foundry-hosted-agent-validator-action@v4.5.1
+      - uses: XiaofuHuang/foundry-hosted-agent-validator-action@v5.0.0
         with:
           github-token: ${{ github.token }}
-          validate-path: scenarios/multiple
+          agent-path: ${{ matrix.agent-path }}
