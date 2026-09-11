@@ -21,9 +21,8 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha }}
           persist-credentials: false
-      - uses: XiaofuHuang/foundry-hosted-agent-validator-action@v4.5.0
+      - uses: XiaofuHuang/foundry-hosted-agent-validator-action@v4.5.1
         with:
           github-token: ${{ github.token }}
           validate-path: scenarios/local-rules
           rules-file: custom-rules.yaml
-

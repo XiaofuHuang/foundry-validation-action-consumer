@@ -21,8 +21,8 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha }}
           persist-credentials: false
-      - uses: XiaofuHuang/foundry-hosted-agent-validator-action@v4.5.0
+      - uses: XiaofuHuang/foundry-hosted-agent-validator-action@v4.5.1
         with:
           github-token: ${{ github.token }}
           validate-path: scenarios/remote-rules
-          rules-file: https://raw.githubusercontent.com/microsoft/GitHub-Copilot-for-Azure/228baba1c929661bef00857b130571db36039774/plugins/azure-skills/skills/microsoft-foundry/foundry-agent/validate/references/default-rules.yaml
+          rules-file: https://raw.githubusercontent.com/XiaofuHuang/foundry-validation-custom-rules/main/rules/foundry-rules.yaml
